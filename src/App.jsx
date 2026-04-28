@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import {
   ArrowRight,
@@ -302,6 +303,8 @@ function ConsultationForm() {
 }
 
 export default function App() {
+  const [selectedPortfolioItem, setSelectedPortfolioItem] = useState(null);
+
   return (
     <div className="min-h-screen bg-white text-slate-950">
       <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur">
@@ -539,19 +542,24 @@ export default function App() {
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {portfolioItems.map((item) => (
                 <article key={item.title} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                  <div className="relative h-72 overflow-hidden bg-slate-950">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPortfolioItem(item)}
+                    className="group/image relative h-72 w-full overflow-hidden bg-slate-950 text-left"
+                    aria-label={`View full ${item.title} website concept`}
+                  >
                     <img
                       src={item.image}
                       alt={`${item.title} example website concept`}
-                      className="h-full w-full object-cover object-top transition duration-500 hover:scale-105"
+                      className="h-full w-full object-cover object-top transition duration-500 group-hover/image:scale-105"
                     />
                     <div className="absolute left-4 top-4 rounded-full bg-blue-600 px-3 py-1 text-xs font-black uppercase tracking-widest text-white shadow-lg">
                       {item.label}
                     </div>
                     <div className="absolute bottom-4 right-4 rounded-xl bg-slate-950/80 px-3 py-2 text-xs font-bold text-white backdrop-blur">
-                      Portfolio example, not a real company
+                      Click to view full image
                     </div>
-                  </div>
+                  </button>
                   <div className="p-6">
                     <h3 className="text-2xl font-black uppercase tracking-tight">{item.title}</h3>
                     <p className="mt-3 leading-7 text-slate-600">{item.description}</p>
@@ -683,6 +691,48 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {selectedPortfolioItem && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedPortfolioItem(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedPortfolioItem.title} full website concept`}
+        >
+          <div
+            className="relative max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-white/10 bg-slate-950 px-5 py-4 text-white">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.25em] text-blue-300">Example Company</p>
+                <h3 className="text-xl font-black">{selectedPortfolioItem.title}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedPortfolioItem(null)}
+                className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-white transition hover:bg-white/20"
+                aria-label="Close full image preview"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="max-h-[78vh] overflow-auto bg-slate-900 p-3">
+              <img
+                src={selectedPortfolioItem.image}
+                alt={`${selectedPortfolioItem.title} full website concept`}
+                className="mx-auto h-auto w-full rounded-2xl"
+              />
+            </div>
+
+            <div className="border-t border-white/10 bg-slate-950 px-5 py-3 text-center text-xs font-semibold text-slate-300">
+              Portfolio example for display only. Not a real company or client project.
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
