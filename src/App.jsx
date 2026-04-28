@@ -122,11 +122,18 @@ const processSteps = [
 
 const portfolioItems = [
   {
-    title: "Cypress Creek Remodeling",
+    title: "Ironclad Roofing Co.",
     label: "Example Company",
-    image: "/portfolio/cypress-creek-remodeling.png",
+    image: "/portfolio/ironclad-roofing-co.png",
     description:
-      "A home remodeling website concept built to showcase project photos, explain services, and drive estimate requests.",
+      "A bold black-and-yellow roofing website concept built for a tough, industrial contractor brand.",
+  },
+  {
+    title: "Forge Home Services",
+    label: "Example Company",
+    image: "/portfolio/forge-home-services.png",
+    description:
+      "A sharp black-and-red home services website concept designed to feel strong, modern, and high-energy.",
   },
   {
     title: "Lone Star Handyman Co.",
@@ -134,13 +141,6 @@ const portfolioItems = [
     image: "/portfolio/lone-star-handyman-co.png",
     description:
       "A handyman service website concept focused on trust, clear service categories, and easy customer contact.",
-  },
-  {
-    title: "Bayou City Lawn & Outdoor",
-    label: "Example Company",
-    image: "/portfolio/bayou-city-lawn-outdoor.png",
-    description:
-      "A local lawn care and outdoor services website concept designed to turn visitors into booked appointments.",
   },
 ];
 
