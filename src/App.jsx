@@ -122,22 +122,25 @@ const processSteps = [
 
 const portfolioItems = [
   {
-    title: "Fenley Bid Systems",
-    label: "Live Website",
+    title: "Cypress Creek Remodeling",
+    label: "Example Company",
+    image: "/portfolio/cypress-creek-remodeling.png",
     description:
-      "Professional website agency homepage built to explain the offer clearly and convert local businesses.",
+      "A home remodeling website concept built to showcase project photos, explain services, and drive estimate requests.",
   },
   {
-    title: "Wright Renovations & Handyman",
-    label: "Concept Design",
+    title: "Lone Star Handyman Co.",
+    label: "Example Company",
+    image: "/portfolio/lone-star-handyman-co.png",
     description:
-      "Home remodeling and handyman website concept designed to build trust and generate estimate requests.",
+      "A handyman service website concept focused on trust, clear service categories, and easy customer contact.",
   },
   {
-    title: "Idea Designs",
-    label: "Concept Design",
+    title: "Bayou City Lawn & Outdoor",
+    label: "Example Company",
+    image: "/portfolio/bayou-city-lawn-outdoor.png",
     description:
-      "Small business website concept focused on clean branding, simple messaging, and clear calls to action.",
+      "A local lawn care and outdoor services website concept designed to turn visitors into booked appointments.",
   },
 ];
 
@@ -523,27 +526,30 @@ export default function App() {
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-sm font-black uppercase tracking-[0.25em] text-blue-600">Portfolio</p>
               <h2 className="mt-3 text-4xl font-black uppercase tracking-tight text-slate-950 md:text-5xl">
-                Recent Website Concepts
+                Example Website Concepts
               </h2>
               <p className="mt-5 text-lg leading-8 text-slate-600">
-                A look at modern website designs created for local service businesses.
+                A look at example website concepts created for the types of small businesses we serve.
+              </p>
+              <p className="mt-3 text-sm font-semibold text-slate-500">
+                These are example concepts for portfolio display only. They are not real companies or client projects.
               </p>
             </div>
 
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {portfolioItems.map((item) => (
                 <article key={item.title} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                  <div className="relative h-56 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 p-6">
-                    <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.14)_1px,transparent_1px)] [background-size:32px_32px]" />
-                    <div className="relative flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-                      <span className="w-fit rounded-full bg-blue-500/20 px-3 py-1 text-xs font-black uppercase tracking-widest text-blue-200">
-                        {item.label}
-                      </span>
-                      <div>
-                        <div className="mb-3 h-3 w-28 rounded-full bg-blue-300/70" />
-                        <div className="mb-2 h-3 w-44 rounded-full bg-white/30" />
-                        <div className="h-3 w-32 rounded-full bg-white/20" />
-                      </div>
+                  <div className="relative h-72 overflow-hidden bg-slate-950">
+                    <img
+                      src={item.image}
+                      alt={`${item.title} example website concept`}
+                      className="h-full w-full object-cover object-top transition duration-500 hover:scale-105"
+                    />
+                    <div className="absolute left-4 top-4 rounded-full bg-blue-600 px-3 py-1 text-xs font-black uppercase tracking-widest text-white shadow-lg">
+                      {item.label}
+                    </div>
+                    <div className="absolute bottom-4 right-4 rounded-xl bg-slate-950/80 px-3 py-2 text-xs font-bold text-white backdrop-blur">
+                      Portfolio example, not a real company
                     </div>
                   </div>
                   <div className="p-6">
